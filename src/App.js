@@ -2,6 +2,7 @@ import React from 'react';
 import "./App.css"
 import Sidebar from './components/Sidebar';
 import Chat from './components/Chat'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 
 function App() {
@@ -11,10 +12,22 @@ function App() {
     {/* <h1> lets do this</h1> */}
 
     <div className="app__body">
-      {/* Sidebar */}
+
+      <Router>
       <Sidebar />
-      {/* Chat */}
-      <Chat />
+        <Switch>
+          
+          <Route path="/rooms/:roomId">
+            <Chat />
+          </Route>
+
+          <Route path="/">
+            <Chat />
+          </Route>
+
+        </Switch>
+      </Router>
+      
     </div>
 
   </div>
