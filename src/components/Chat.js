@@ -7,7 +7,6 @@ import MicIcon from '@material-ui/icons/Mic';
 import { useParams } from 'react-router-dom'
 import db from '../firebase'
 import { useStateValue } from '../StateProvider';
-import firebase from '../firebase'
 
 function Chat() {
 
@@ -16,7 +15,7 @@ function Chat() {
     const { roomId } = useParams()
     const [ roomName, setRoomName ] = useState('')
     const [ messages, setMessages ] = useState([])
-    const [ { user }, dispatch ] = useStateValue()
+    const [ { user } ] = useStateValue()
 
     useEffect(() => {
         setSeed(Math.floor(Math.random() * 5000))
@@ -57,7 +56,7 @@ function Chat() {
                 <Avatar src={`https://avatars.dicebear.com/api/human/${seed}.svg`} />
                 <div className="chat__headerInfo">
                     <h3>{roomName}</h3>
-                    <p>Last seen at ....</p>
+                    <p>last seen {new Date(messages[messages.length -1]?.timestamp?.toDate()).toUTCString()}</p>
                 </div>
                 <div className="chat__headerRight">
                     <IconButton>
