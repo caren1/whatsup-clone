@@ -62,7 +62,7 @@
     font-size: xx-small;
 }
 
-.chat__message__chat__reciever {
+.chat__reciever {
     margin-left: auto;
     background-color: #dcf8c6;
 }
